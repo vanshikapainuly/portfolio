@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Vanshika Painuly, a B.Tech CSE student. Showcasing skills, projects, and contact information.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Portfolio | Vanshika Painuly</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta property="og:title" content="Portfolio | Vanshika Painuly">
+    <meta property="og:description" content="Portfolio of Vanshika Painuly, a B.Tech CSE student. Showcasing skills, projects, and contact information.">
+    <meta property="og:image" content="images/hero-background.jpg">
+    <meta property="og:url" content="https://your-portfolio-url.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <!-- Photo on the left -->
+            <img src="images/hero-background.jpg" alt="Vanshika's Photo" class="profile-pic">
+            <!-- Hero text on the right -->
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Vanshika Painuly</span></h1>
+                <p>B.Tech CSE student!</p>
+                <a href="#about" class="cta-button">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a 3rd-year B.Tech CSE student with a passion for software engineering and training. I love solving problems, learning new technologies, and helping others grow in their coding journey.</p>
+            <p>I am currently working on improving my skills in development and preparing for software engineering roles.</p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Programming Languages: C++, Java, Python, C</li>
+                <li>Web Development: HTML, CSS, JavaScript</li>
+                <li>Frameworks: React</li>
+                <li>Tools: Git, VSCode, Linux</li>
+                <li>Database: MySQL </li>
+            </ul>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Portfolio Website:</strong> A personal portfolio website to showcase my skills and projects. <a href="#">View Project</a></li>
+                <li><strong>Bus PS (Bus reservation system) :</strong> Designed a website in team for bus seats reservation from our university to main town.Curated using MYSQL, Django, HTML, CSS <a href="#">View Project</a></li>
+                <li><strong>File Zipper:</strong> This project is based on Huffman Coding, a lossless, bottom-up compression algorithm. It can compress and decompress any text files.. <a href="#">View Project</a></li>
+            </ul>
+        </section>
+
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <label for="name">Enter your name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Enter your email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Enter your message</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <footer>
+        <p>Connect with me:</p>
+        <a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+    
+
+    <!-- Scroll-to-Top Button -->
+    <button id="scrollToTopBtn">↑</button>
+
+    <script>
+        // Scroll-to-Top Button Functionality
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Section Visibility on Scroll
+        const sections = document.querySelectorAll('section');
+        const options = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Highlight Active Navigation Link
+        window.addEventListener("scroll", () => {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll("nav ul li a");
+            
+            let current = "";
+        
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 50) {
+                    current = section.getAttribute("id");
+                }
+            });
+        
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
